@@ -10,6 +10,8 @@ class Item extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name'
+        'name',
+        // 'completed',
+        // 'completed_at'
     ];
 }
