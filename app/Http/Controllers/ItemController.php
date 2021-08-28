@@ -20,7 +20,7 @@ class ItemController extends Controller
         // return response()->json($item);
 
         $newItem = new Item;
-        $newItem->name = $request->item["name"];
+        $newItem->name = $request->input('name');
         $newItem->save();
 
         return $newItem;
@@ -39,10 +39,9 @@ class ItemController extends Controller
             if($item)
        
                 {
-                    $item->completed = $request->item['completed'] ? true : false;
-                    $item->completed_at = $request->item['completed'] ? Carbon::now() : null;
+                    $item->completed = $request->input('completed') ? true : false;
+                    $item->completed_at = $request->input('completed') ? Carbon::now() : null;
                     $item->save();
-
                     return $item;
                 }
 
