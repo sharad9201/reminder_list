@@ -49,15 +49,15 @@ class ItemController extends Controller
         
     }
 
-    public function delete( Request $request , $id){
+    public function delete( Request $request ,$id){
 
-        $item= Item::find($id);
+        $item = Item::where('id',$id)->delete();
 
-        if(is_null($item)){
-            return response()->json(["messsage"=>"record not found"],404);
+        if($item){
+            return ["result"=>"product is deleted"];
+        }else
+        {
+            return ["result"=>"operation failed"];
         }
-
-        $item->delete();
-        return response()->json(null, 200);
     }
 }
